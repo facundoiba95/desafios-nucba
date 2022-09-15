@@ -3,36 +3,42 @@ let Pizzas = [
      nombre:"Simple",
      ingredientes: ['queso','tomate','oregano'],
      precio: 500,
+     imagen: './js/pizza-simple.jpg'
     },
   
     { id:2,
       nombre:"Completa",
       ingredientes: ['queso','jamon','anchoas','salsa','aceitunas','oregano'],
       precio: 1000,
+      imagen: './js/pizza-completa.jpg'
     },
   
     {id:3,
      nombre:"Especial",
      ingredientes: ['muza','salsa','morron','jamon','aceitunas','oregano'],
      precio: 1300,
+     imagen: './js/pizza-especial.jpg'
     },
   
     {id:4,
       nombre:"Rucula",
       ingredientes: ['queso','salsa','jamon','rucula'],
       precio: 1400,
+      imagen: './js/pizza-rucula.avif'
     },
   
     {id:5,
       nombre:"Palmitos",
       ingredientes: ['queso','salsa','morron','jamon','palmitos'],
       precio: 1300,
+      imagen: './js/pizza-palmitos.jpg'
     },
   
     { id:6,
       nombre:"Muzzarella",
       ingredientes: ['muza','salsa','morron','oregano'],
       precio: 800,
+      imagen: './js/pizza-mozzarella.jfif'
     },
   ]
 
@@ -46,6 +52,10 @@ let Pizzas = [
   //nuevo array donde se guardan las pizzas filtradas en pizzaId
   let nuevoPizzas = []
 
+  //guardar array original en localStorage
+  localStorage.setItem('pizzas',JSON.stringify(Pizzas));
+
+
 
   const pizzaId = () => {
 
@@ -54,6 +64,7 @@ let Pizzas = [
     if(!filterId.length){
         errorMessage.style.visibility = 'visible';
         errorMessage.innerHTML = createHtmlErrorNoneText();
+        errorMessage.style.animation = 'headShake 1s reverse infinite '
         nuevoPizzas = [];
         input.value = '';
         renderPizza(nuevoPizzas);
@@ -61,6 +72,7 @@ let Pizzas = [
 
       } else if(filterId < 1 || filterId > 6){
         errorMessage.style.visibility = 'visible';
+        errorMessage.style.animation = 'headShake 1s reverse infinite '
         errorMessage.innerHTML = createHtmlErrorOptions()
         nuevoPizzas = [];
         input.value = '';
@@ -80,8 +92,9 @@ let Pizzas = [
       
    //se crea el html, recibe el array de pizzas original como parametro.
    const createHtmlPizza = pizzas => {
-        return `<h2 class="title"><p>Variedad: </p>${pizzas.nombre}</h2>
-        <h4 class="precio"><p>Precio: </p>$${pizzas.precio}</h4>`
+      return `<img src="${pizzas.imagen}" class="imagenes" >
+              <h2 class="title"><p>Variedad: </p>${pizzas.nombre}</h2>
+              <h4 class="precio"><p>Precio: </p>$${pizzas.precio}</h4>`
     }
 
     const createHtmlErrorNoneText = () => {
