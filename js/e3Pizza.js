@@ -1,3 +1,4 @@
+
 let Pizzas = [
     {id:1,
      nombre:"Simple",
@@ -94,7 +95,10 @@ let Pizzas = [
    const createHtmlPizza = pizzas => {
       return `<img src="${pizzas.imagen}" class="imagenes" >
               <h2 class="title"><p>Variedad: </p>${pizzas.nombre}</h2>
-              <h4 class="precio"><p>Precio: </p>$${pizzas.precio}</h4>`
+              <h4 class="precio"><p>Precio: </p>$${pizzas.precio}</h4>
+            
+              
+              `
     }
 
     const createHtmlErrorNoneText = () => {
