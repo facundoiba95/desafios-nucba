@@ -80,7 +80,7 @@ const altura = altura => medida = altura /10
 const peso = peso =>  medida = peso /10
 
 const createHtmlCards = array => {
-    const imagePokemonUno = array.sprites.other.dream_world.front_default;
+    const imagePokemonUno = array.sprites.other.dream_world.front_default ? array.sprites.other.dream_world.front_default : array.sprites.other.home.front_default ;
 
     return`
     <div class="cardPokemon" >
