@@ -81,7 +81,8 @@ const peso = peso =>  medida = peso /10
 
 const createHtmlCards = array => {
     const imagePokemonUno = array.sprites.other.dream_world.front_default ? array.sprites.other.dream_world.front_default : array.sprites.other.home.front_default ;
-
+    const moves = array.moves[7].move.name ? array.moves[7].move.name : array.moves;
+  
     return`
     <div class="cardPokemon" >
     <h3 class="id">${array.id}</h3>
@@ -98,7 +99,7 @@ const createHtmlCards = array => {
             <h2 class="ability">${array.abilities[0].ability.name.toUpperCase()}</h2>
          </div>
          <div class="info-container">
-             <span class="move">Moves: ${array.moves[7].move.name}</span>
+             <span class="move">Moves: ${moves}</span>
              <div class="stats">
                  <h4 class="attack"><i class="fa-solid fa-burst"></i>Attack: ${array.stats[1].base_stat}</h4>
                  <h4 class="defense"><i class="fa-solid fa-shield"></i>Defense: ${array.stats[2].base_stat}</h4>
